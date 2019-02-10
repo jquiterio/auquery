@@ -1,3 +1,4 @@
+
 from reqs.command import Command
 from reqs.query import Query
 from reqs.query import q_result
@@ -65,8 +66,9 @@ class Sort(Command):
 
 class ExportHTML(Command):
     def run(self,line):
-        with open('/tmp/auquery.hml', 'w') as fp:
+        html_file = '/tmp/auquery.html'
+        with open(html_file, 'w') as fp:
             fp.write(tab.get_html_string())
             fp.close
-        print("Html file create!: /tmp/auquery.hml")
+        print("Html file create!: %s"%(html_file))
 

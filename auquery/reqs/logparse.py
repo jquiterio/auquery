@@ -1,8 +1,12 @@
 
 from reqs.utils import format_date
-files = ["/var/log/audit/audit.log", "/var/log/audit/audit.log.1","/var/log/audit/audit.log.2","/var/log/audit/audit.log.3", "/var/log/audit/audit.log.4"]
+import glob
+from socket import gethostname
+
+audit_logfile = '/var/log/audit/audit.*'
+
 with open('/var/log/audit/all.log','w') as outfile:
-  for fname in files:
+  for fname in glob.iglob(audit_logfile):
     with open(fname) as infile:
       for line in infile:
         if 'SYSCALL' in line:
@@ -10,9 +14,10 @@ with open('/var/log/audit/all.log','w') as outfile:
 
 _log_file = "/var/log/audit/all.log"
 _log_list = []
-_node_list = []
-for i in range(1,8): _node_list.append("dp-train-0%s"%(i))
-_master_node = "dp-train-08"
+# _node_list = []
+# for i in range(1,8): 
+#   _node_list.append("dp-train-0%s"%(i))
+_master_node = gethostname()
 
 _data = open(_log_file).readlines()
 

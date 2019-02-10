@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 import readline
 import traceback
 import reqs
 from .log import logger
 
+#module from ishell
 
 class Console(object):
     def __init__(self, prompt="Prompt", prompt_delim=">"):

@@ -16,6 +16,6 @@ setup(
     description='Audit Query',
     author='Jorge Quiterio',
     author_email='eu@jquiterio.eu',
-    url='http://jquiterio.eu/apps/auquery',
-    py_modules=['auqery']
+    url='https://jquiterio.eu/projects/auquery',
+    py_modules=['auquery']
 )
