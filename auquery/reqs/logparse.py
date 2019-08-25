@@ -2,17 +2,23 @@
 from reqs.utils import format_date
 import glob
 from socket import gethostname
+import os
 
-audit_logfile = '/var/log/audit/audit.*'
+auqery_log_dir = os.environ['AQUERY_LOG_DIR']
+if not auqery_log_dir:
+  auqery_log_dir = '/var/log/audit'
 
-with open('/var/log/audit/all.log','w') as outfile:
+audit_logfile = auqery_log_dir+'/audit.*'
+dst_log_file = auqery_log_dir+'/all.log'
+
+with open(dst_log_file,'w') as outfile:
   for fname in glob.iglob(audit_logfile):
     with open(fname) as infile:
       for line in infile:
         if 'SYSCALL' in line:
           outfile.write(line)
 
-_log_file = "/var/log/audit/all.log"
+_log_file = dst_log_file
 _log_list = []
 # _node_list = []
 # for i in range(1,8): 
