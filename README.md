@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/auquery.svg)](https://badge.fury.io/py/auquery)
+
 
 Defaults
 --
